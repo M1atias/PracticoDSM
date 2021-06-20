@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View,FlatList} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
@@ -34,12 +34,14 @@ const AlbumList = (props) => {
 
     return (
       <View style={{flex: 1}}>
-        <ScrollView>{renderAlbums(photos)}</ScrollView>
+        <FlatList data={photos.photoset}
+        renderItem={({item}) => renderAlbums(item)}/>
       </View>
     );
     
-}
-
+  }
+  
+  //<ScrollView>{renderAlbums(photos)}</ScrollView>
 
 // AlbumList versión Componente
 /*
