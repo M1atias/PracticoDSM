@@ -12,7 +12,10 @@ const CriptoDetail = ({coin}) => {
                    <Text style={styles.textSymbol}>{coin.symbol}</Text>
                </View>
            </View>
-            <Text>${coin.current_price}</Text>
+            <View>
+            <Text style={styles.textPrice}>${coin.current_price}</Text>
+            <Text style={[styles.pricePercentae, coin.price_change_percentage_24h > 0 ? styles.priceUp: styles.priceDown]}>{coin.price_change_percentage_24h}</Text>
+            </View>
         </View>
     )
             
@@ -38,6 +41,19 @@ const styles = StyleSheet.create({
     },
     containerName:{
         marginLeft:10
+    },
+    pricePercentae:{
+        textAlign:'right'
+    },
+    priceUp:{
+        color:'#00B5B9'
+    },
+    priceDown:{
+        color:'#fc4422'
+    },
+    textPrice:{
+        color:'#000000',
+        textAlign:'right'
     }
     
 })
