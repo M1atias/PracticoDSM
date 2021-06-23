@@ -3,6 +3,7 @@ import React from 'react';
 
 import AlbumList from './components/AlbumList';
 import PhotoList from './components/PhotoList';
+import CriptoList from './components/CriptoList';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -21,6 +22,11 @@ export default  App = () => (
         name="photoList"
         component={PhotoList}
         options={{title: 'Photos'}}
+      />
+      <Stack.Screen
+        name="criptoList"
+        component={CriptoList}
+        options={{title: 'Cripto'}}
       />
     </Stack.Navigator>
   </NavigationContainer>
