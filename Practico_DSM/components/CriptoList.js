@@ -7,6 +7,9 @@ const CriptoList = (props) => {
     const [coins, setCoins] = useState(null)
     const [search, setSearch] = useState('')
     const [refreshing,setRefreshing] = useState(false)
+    const [data,setData] = useState(null)
+    const [coinLoad, setCoinLoad] = useState(false)
+    
     const loadData = async () => {
         const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false')
         setCoins(await res.json())
@@ -19,7 +22,15 @@ const CriptoList = (props) => {
             setCoins(await res.json())
         })*/
         loadData()
+        
     },[])
+
+    const buscarCoin = () => {
+        coinData = coins.filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase()) || coin.symbol.toLowerCase().includes(search.toLowerCase()))
+        setData(coinData)
+        setCoins(coinData)
+    }
+
 
     if(!coins){
         return(
@@ -37,7 +48,6 @@ const CriptoList = (props) => {
             </View>
           <FlatList style={styles.list} data={coins.filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase()) || coin.symbol.toLowerCase().includes(search.toLowerCase()))}
           renderItem={({item}) => {
-              console.log(data)
               return <CriptoDetail coin={item}/>
           }} 
           showsVerticalScrollIndicator={false}
