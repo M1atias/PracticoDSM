@@ -1,9 +1,6 @@
 # PracticoDSM
 
-Trabajo Practico de la materia electiva de Diseño de MultiPantalla.
-Año: 2021
-Curso: 5k4
-Integrantes:
+Trabajo Practico de la materia electiva de Diseño de Multipantalla, año: 2021, curso 5k4 e integrantes:
   - Molina Matias Franco, 75477
   - Actis Agudiak Lucas Gabriel, 75298
 
