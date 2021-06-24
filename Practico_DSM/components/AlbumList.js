@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View,FlatList} from 'react-native';
+import {Text, View,FlatList,StyleSheet} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
+import Card from './Card';
+import CardSection from './CardSection';
+import Button from './Button';
 
 // AlbumList versión Funcional
 const AlbumList = (props) => {
@@ -33,10 +36,30 @@ const AlbumList = (props) => {
 
   return (
     <View style={{flex: 1}}>
+      <Card>
+        <CardSection>
+          <View style={styles.headerContentStyle}>
+            <Text style={styles.headerTextStyle}>Listado Cripto</Text>
+          </View>
+        </CardSection>
+        <CardSection>
+          <Button title = 'Cripto Button' onPress={()=> props.navigation.navigate('criptoList')}>See Now!</Button>
+        </CardSection>
+      </Card>
       <FlatList data={photos.photoset}
       renderItem={({item}) => renderAlbum(item)}/>
     </View>
   );  
 }  
+
+const styles = StyleSheet.create({
+  headerContentStyle: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  headerTextStyle: {
+    fontSize: 18,
+  }
+})
 
 export default AlbumList;
